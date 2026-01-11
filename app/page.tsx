@@ -683,7 +683,7 @@ export default function YeeetHub() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="group relative p-8 h-full rounded-3xl border border-pink-500/40 bg-black/60 backdrop-blur-2xl transition-all hover:-translate-y-2 hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]">
                 <div className="text-5xl mb-6">🛰️</div>
-                <h3 className="text-2xl font-black text-white">Aerospace Satellite Power Planning</h3>
+                <h3 className="text-2xl font-black text-white">Aerospace Satellite Power Planning (application of electronics in aerospace field)</h3>
                 <p className="text-slate-300 mt-3 text-sm leading-relaxed font-medium">Power on satellites is limited. Balance solar generation with subsystem loads to keep the mission alive.</p>
                 
                 <div className="mt-6">
@@ -705,7 +705,7 @@ export default function YeeetHub() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-black text-white">Grid network solution</h3>
-                <p className="text-slate-300 mt-3 text-sm leading-relaxed font-medium">Design a Electricity sending system to keep functionality of a city, COMING SOON!</p>
+                <p className="text-slate-300 mt-3 text-sm leading-relaxed font-medium">Design a Electricity sending system to keep functionality of a city (application of electronics in power sector), COMING SOON!</p>
                 <div className="mt-6 inline-block px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/50">DIFFICULTY: HARD</div>
               </div>
             </div>
