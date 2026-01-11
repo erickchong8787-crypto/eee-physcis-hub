@@ -1223,7 +1223,7 @@ export default function YeeetHub() {
 
               <footer className="bg-cyan-950/20 border border-cyan-900/50 p-4 rounded text-center">
                   <p className="text-[10px] text-cyan-300 uppercase tracking-widest">
-                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10} | v1.2
+                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10} | v1.3
                   </p>
               </footer>
             </section>
