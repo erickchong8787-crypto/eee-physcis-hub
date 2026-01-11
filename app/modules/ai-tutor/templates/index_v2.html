@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Lab Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#02040a',
+                        surface: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #02040a;
+            color: #e2e8f0;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.5); }
+        ::-webkit-scrollbar-thumb { background: rgba(71, 85, 105, 0.8); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 1); }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-hidden selection:bg-blue-500/30">
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 z-[-5] pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#02040a]/50 to-[#02040a]"></div>
+    </div>
+    
+    <!-- Grid Pattern -->
+    <div class="fixed inset-0 z-[-3] pointer-events-none opacity-20" 
+         style="background-image: linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px); background-size: 50px 50px;">
+    </div>
+
+    <main class="max-w-6xl mx-auto pt-12 px-6 relative z-10">
+        <header class="flex justify-between items-end border-b border-blue-900/30 pb-6 mb-10">
+            <div>
+                <h1 class="text-5xl font-black text-white tracking-tighter drop-shadow-[0_0_30px_rgba(59,130,246,0.8)] mb-2">
+                    ELECTRONICS LAB
+                </h1>
+                <div class="flex items-center gap-3">
+                    <span class="px-2 py-1 rounded bg-blue-900/30 border border-blue-500/30 text-[10px] font-mono text-blue-400 tracking-widest uppercase">
+                        Module: External
+                    </span>
+                    <span class="text-slate-500 font-mono text-xs tracking-widest uppercase">
+                        // Port 5000 Interface
+                    </span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800">
+                <div class="relative">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full relative z-10"></div>
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full absolute inset-0 animate-ping"></div>
+                </div>
+                <span class="text-xs font-bold text-emerald-500 tracking-wider">SYSTEM ONLINE</span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="md:col-span-8 bg-slate-950/80 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)]">
+                <div class="flex justify-between items-start mb-8">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="text-blue-500">01.</span> 
+                        SENSOR READINGS
+                    </h2>
+                    <button class="text-xs font-mono text-slate-400 hover:text-white transition-colors">[REFRESH]</button>
+                </div>
+                <div class="h-64 bg-black/40 rounded-2xl border border-slate-800 flex items-center justify-center relative overflow-hidden group">
+                    <svg class="w-full h-full text-blue-500 opacity-50 group-hover:opacity-80 transition-opacity" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 50 Q 25 20 50 50 T 100 50" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        <path d="M0 50 Q 25 80 50 50 T 100 50" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+                    </svg>
+                    <p class="absolute font-mono text-sm text-slate-500">Waiting for sensor input...</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <div class="bg-slate-950/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-800">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] uppercase text-xs tracking-widest">
+                            Initialize Sequence
+                        </button>
+                        <button class="w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition-all border border-slate-700 uppercase text-xs tracking-widest">
+                            Emergency Stop
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-slate-950/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-800">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Status Log</h3>
+                    <div class="font-mono text-xs space-y-2 text-slate-500">
+                        <p><span class="text-emerald-500">>></span> Connection established</p>
+                        <p><span class="text-blue-500">>></span> Loading modules...</p>
+                        <p><span class="text-slate-600">>></span> Ready for input</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.btn-primary { background: var(--accent-green); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.2s; }
+.btn-primary:hover { filter: brightness(1.1); }
+
+.data-readout { 
+    margin-top: 15px; 
+    font-family: 'Consolas', monospace; 
+    color: var(--accent-blue); 
+    background: #0d1117; 
+    padding: 10px; 
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.status-text { font-weight: bold; margin-bottom: 10px; }
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .layout-flex { flex-direction: column; }
+    .sidebar { width: 60px; padding: 20px 10px; }
+    .sidebar-logo, .module-name, .module-number, .nav-item span { display: none; }
+    .main-contenta { margin-left: 60px; padding: 20px; }
+    .lab-column { position: static; width: 100%; }
+}
+
+.logic-btn {
+    background: #21262d;
+    color: white;
+    border: 1px solid #30363d;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+    min-width: 100px;
+    transition: 0.2s;
+}
+.logic-btn.active {
+    background: var(--accent-blue);
+    border-color: #58a6ff;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+}
