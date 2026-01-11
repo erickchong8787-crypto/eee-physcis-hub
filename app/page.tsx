@@ -844,9 +844,9 @@ export default function YeeetHub() {
 
               {(!satMissionActive || satMissionSuccess) && (
                 <div className="absolute inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center">
-                  <div className={`text-center p-8 border rounded-2xl relative overflow-hidden ${satMissionSuccess ? 'border-emerald-500/50 bg-emerald-950/30' : 'border-red-500/50 bg-red-950/30'}`}>
-                    {!satMissionSuccess && <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-red-500 shadow-[0_0_20px_rgba(239,68,68,1)] animate-pulse" />}
-                    {!satMissionSuccess && (
+                  <div className={`text-center p-8 border rounded-2xl relative overflow-hidden ${satBriefingActive ? 'border-cyan-500/50 bg-cyan-950/30' : satMissionSuccess ? 'border-emerald-500/50 bg-emerald-950/30' : 'border-red-500/50 bg-red-950/30'}`}>
+                    {!satMissionSuccess && !satBriefingActive && <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-red-500 shadow-[0_0_20px_rgba(239,68,68,1)] animate-pulse" />}
+                    
                       <>
                         {satBriefingActive ? (
                           <div className="max-w-md mx-auto">
@@ -880,7 +880,7 @@ export default function YeeetHub() {
                         <div className="w-32 h-32 bg-red-500/20 rounded-full blur-3xl animate-pulse" />
                       </div>
                     <h2 className={`text-4xl font-black mb-4 ${satMissionSuccess ? 'text-emerald-500' : 'text-red-500'}`}>
-                      {satMissionSuccess ? (satMissionLevel === 3 ? "CAMPAIGN COMPLETE" : "MISSION SUCCESS") : "MISSION FAILED"}
+                      {satMissionSuccess ? (satMissionLevel === 3 ? "MISSION SUCCESS!" : "MISSION SUCCESS") : "MISSION FAILED"}
                     </h2>
                     <p className={`mb-6 font-mono ${satMissionSuccess ? 'text-emerald-200' : 'text-red-200'}`}>
                       {satMissionSuccess ? `Orbit ${satMissionLevel} Established. ${satMissionLevel < 3 ? "Preparing next phase..." : "All objectives met."}` : satFailureReason}
@@ -925,7 +925,6 @@ export default function YeeetHub() {
                           </>
                         )}
                       </>
-                    )}
                   </div>
                 </div>
               )}
@@ -1224,7 +1223,7 @@ export default function YeeetHub() {
 
               <footer className="bg-cyan-950/20 border border-cyan-900/50 p-4 rounded text-center">
                   <p className="text-[10px] text-cyan-300 uppercase tracking-widest">
-                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10}
+                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10} | v1.2
                   </p>
               </footer>
             </section>
