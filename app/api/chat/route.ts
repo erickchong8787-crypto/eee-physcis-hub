@@ -34,8 +34,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ content: completion.choices[0].message.content });
-  } catch (error) {
+  } catch (error: any) {
     console.error("GROQ API ERROR:", error);
-    return NextResponse.json({ error: "Key invalid or network error" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Key invalid or network error" }, { status: 500 });
   }
 }

@@ -506,10 +506,15 @@ export default function AiTutorPage() {
         body: JSON.stringify({ messages: [...messages, userMessage] }),
       });
       const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to get response from AI");
+      }
+
       setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
-    } catch (err) { 
+    } catch (err: any) { 
       console.error("Connection Error:", err); 
-      setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ **Connection Error**: Could not connect to the AI service." }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: `⚠️ **Error**: ${err.message || "Could not connect to the AI service."}` }]);
     } finally { 
       setIsLoading(false); 
     }
