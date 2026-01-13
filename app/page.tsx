@@ -1221,10 +1221,13 @@ export default function YeeetHub() {
                   </div>
               </div>
 
-              <footer className="bg-cyan-950/20 border border-cyan-900/50 p-4 rounded text-center">
+              <footer className="bg-cyan-950/20 border border-cyan-900/50 p-4 rounded flex justify-between items-center">
                   <p className="text-[10px] text-cyan-300 uppercase tracking-widest">
-                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10} | v1.3
+                    Eng Data: I = P/V | Signal Marks: {satScore} | Data Loss: {satMissedSignals}/{satMissionLevel === 1 ? 5 : 10} | v1.4
                   </p>
+                  <button onClick={() => setView('scenarios')} className="text-[10px] font-bold text-red-400 hover:text-red-300 uppercase border border-red-900/50 bg-red-950/30 px-3 py-1 rounded transition-colors">
+                    Exit Mission
+                  </button>
               </footer>
             </section>
           </div>
@@ -1514,6 +1517,21 @@ export default function YeeetHub() {
                       </marker>
                     </defs>
 
+                    {/* Magnetic Field Loops (Back) */}
+                    {[100, 200, 300].map((y, i) => (
+                      <path 
+                        key={`back-${i}`}
+                        d={`M 120 ${y} A 80 20 0 0 1 280 ${y}`} 
+                        fill="none" 
+                        stroke="#3b82f6" 
+                        strokeWidth="2" 
+                        strokeDasharray="5,5" 
+                        opacity="0.5" 
+                        className="animate-gravity-flow"
+                        style={{ animationDirection: rhgI === 'up' ? 'reverse' : 'normal' }}
+                      />
+                    ))}
+
                     {/* Wire */}
                     <line x1="200" y1="20" x2="200" y2="380" stroke="#475569" strokeWidth="12" strokeLinecap="round" />
                     
@@ -1537,20 +1555,9 @@ export default function YeeetHub() {
                     />
                     <text x="220" y="200" fill="#fbbf24" fontSize="20" fontWeight="bold">I</text>
 
-                    {/* Magnetic Field Loops (Fingers) */}
+                    {/* Magnetic Field Loops (Front) */}
                     {[100, 200, 300].map((y, i) => (
-                      <g key={i} className="transition-all duration-500">
-                        {/* Back of loop */}
-                        <path 
-                          d={`M 120 ${y} A 80 20 0 0 1 280 ${y}`} 
-                          fill="none" 
-                          stroke="#3b82f6" 
-                          strokeWidth="2" 
-                          strokeDasharray="5,5" 
-                          opacity="0.5" 
-                          className="animate-gravity-flow"
-                          style={{ animationDirection: rhgI === 'up' ? 'normal' : 'reverse' }}
-                        />
+                      <g key={`front-${i}`} className="transition-all duration-500">
                         {/* Front of loop */}
                         <path 
                           d={`M 280 ${y} A 80 20 0 0 1 120 ${y}`} 
@@ -1559,11 +1566,12 @@ export default function YeeetHub() {
                           strokeWidth="3" 
                           strokeDasharray="5,5"
                           className="animate-gravity-flow"
-                          style={{ animationDirection: rhgI === 'up' ? 'normal' : 'reverse' }}
-                        />
-                        {/* Direction Arrows on Front Loop */}
+                          style={{ animationDirection: rhgI === 'up' ? 'reverse' : 'normal' }}
+                         />
+                      
+                         {/* Direction Arrows on Front Loop */}
                         <path 
-                          d={rhgI === 'up' ? `M 210 ${y+20} A 80 20 0 0 1 190 ${y+20}` : `M 190 ${y+20} A 80 20 0 0 0 210 ${y+20}`}
+                          d={rhgI === 'up' ? `M 190 ${y+20} A 80 20 0 0 0 210 ${y+20}` : `M 210 ${y+20} A 80 20 0 0 1 190 ${y+20}`}
                           fill="none" stroke="#60a5fa" strokeWidth="3" markerEnd="url(#blueArrow)"
                         />
                       </g>
